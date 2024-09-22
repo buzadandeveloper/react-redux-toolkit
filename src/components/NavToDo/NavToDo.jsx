@@ -15,14 +15,11 @@ export const NavToDo = () => {
             placeholder="Input Task"
             type="text"
             name="task"
-            
             maxLength="50"
-            
           />
           <button
             className="bg-sky-300 text-white px-3 py-1 rounded-lg hover:bg-sky-500"
             type="submit"
-            
           >
             Add
           </button>

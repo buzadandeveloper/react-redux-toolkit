@@ -20,7 +20,6 @@ export const ToDoView = () => {
                 <tr
                   key={id}
                   className="group/task odd:bg-white even:bg-slate-100"
-                  
                 >
                   <td className="w-[50px] border p-1 rounded-bl-lg group-hover/task:bg-sky-100">
                     {id}
