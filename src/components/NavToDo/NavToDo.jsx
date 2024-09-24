@@ -1,6 +1,22 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToDo } from "../../features/toDoSlice";
 import icon from "../../assets/icon.svg";
 
 export const NavToDo = () => {
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+
+  const handleChangeInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  const addTask = (e) => {
+    e.preventDefault();
+    if (input.trim() === "") return;
+    dispatch(addToDo(input));
+    setInput("");
+  };
 
   return (
     <div className="bg-sky-400">
@@ -15,11 +31,14 @@ export const NavToDo = () => {
             placeholder="Input Task"
             type="text"
             name="task"
+            value={input}
             maxLength="50"
+            onChange={handleChangeInput}
           />
           <button
             className="bg-sky-300 text-white px-3 py-1 rounded-lg hover:bg-sky-500"
             type="submit"
+            onClick={addTask}
           >
             Add
           </button>
