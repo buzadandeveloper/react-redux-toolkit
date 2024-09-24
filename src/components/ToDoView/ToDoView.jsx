@@ -1,6 +1,14 @@
-export const ToDoView = () => {
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removeToDo } from "../../features/toDoSlice";
 
-    const task = [];
+export const ToDoView = () => {
+  const tasks = useSelector((state) => state.toDo.tasks || []);
+  const dispatch = useDispatch();
+
+  const deleteTask = (id) => {
+    dispatch(removeToDo(id));
+  };
 
   return (
     <div className="bg-slate-200 ">
@@ -16,10 +24,11 @@ export const ToDoView = () => {
                   To Do
                 </td>
               </tr>
-              {task.map(({ id, description }) => (
+              {tasks.map(({ id, description }) => (
                 <tr
                   key={id}
                   className="group/task odd:bg-white even:bg-slate-100"
+                  onClick={() => deleteTask(id)}
                 >
                   <td className="w-[50px] border p-1 rounded-bl-lg group-hover/task:bg-sky-100">
                     {id}
